@@ -1,9 +1,7 @@
-import { Blockchain, BlockchainState, BlockchainActions } from './../blockchain/blockchain.model';
+import * as Blockchain from './../blockchain/blockchain.model';
 import { Action } from '@ngrx/store';
 
-export const ADD_COIN = 'ADD_COIN';
-
-export const initialState: BlockchainState = {
+export const initialState: Blockchain.BlockchainState = {
    blockchain: [
       {
          name: 'Bitcoin',
@@ -12,9 +10,9 @@ export const initialState: BlockchainState = {
    ]
 };
 
-export function addCoinReducer(state: Blockchain[] = initialState.blockchain, action: BlockchainActions): Blockchain[] {
+export function addCoinReducer( state: Blockchain.Blockchain[] = initialState.blockchain, action: Blockchain.BlockchainActions ): Blockchain.Blockchain[] {
    switch (action.type) {
-      case ADD_COIN:
+      case Blockchain.ADD_COIN:
          return [...state, action.payload];
       default:
          return state;
