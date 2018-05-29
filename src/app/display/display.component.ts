@@ -1,8 +1,8 @@
-import { Blockchain } from './../blockchain/blockchain.model';
 import { Component, OnInit } from '@angular/core';
 import { AppState } from './../app.state';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { Blockchain } from '../reducers/blockchain/blockchain.model';
 
 @Component({
    selector: 'app-display',

@@ -3,13 +3,13 @@
       {{ title }}
    </div>
    <div class="panel-body">
-      <form [formGroup]="angForm" novalidate>
+      <form [formGroup]="form" novalidate>
          <div class="form-group">
             <label class="col-md-4">Coin Name</label>
             <input type="text" class="form-control" formControlName="name" #name />
          </div>
-         <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
-            <div *ngIf="angForm.controls['name'].errors.required">
+         <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)" class="alert alert-danger">
+            <div *ngIf="form.controls['name'].errors.required">
                Name is required.
             </div>
          </div>
@@ -17,14 +17,14 @@
             <label class="col-md-4">Coin Price</label>
             <input type="text" class="form-control" formControlName="price" #price/>
          </div>
-         <div *ngIf="angForm.controls['price'].invalid && (angForm.controls['price'].dirty || angForm.controls['price'].touched)"
+         <div *ngIf="form.controls['price'].invalid && (form.controls['price'].dirty || form.controls['price'].touched)"
             class="alert alert-danger">
-            <div *ngIf="angForm.controls['price'].errors.required">
+            <div *ngIf="form.controls['price'].errors.required">
                Price is required.
             </div>
          </div>
          <div class="form-group">
-            <button (click)="addCoin(name.value, price.value)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Add</button>
+            <button (click)="addCoin(name.value, price.value)" [disabled]="form.pristine || form.invalid" class="btn btn-primary">Add</button>
          </div>
       </form>
    </div>
