@@ -1,7 +1,4 @@
 export interface Blockchain {
-   name: string;
-   price: number;
+    name: string;
+    price: number;
 }
-
-
-

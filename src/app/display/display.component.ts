@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppState } from './../app.state';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Select, Store } from '@ngxs/store';
+import { RemoveBlockchain } from '../reducers/blockchain/blockchain.actions';
 import { Blockchain } from '../reducers/blockchain/blockchain.model';
 
 @Component({
@@ -11,12 +10,18 @@ import { Blockchain } from '../reducers/blockchain/blockchain.model';
 })
 export class DisplayComponent implements OnInit {
 
-   coins: Observable<Blockchain[]>;
-   constructor(private store: Store<AppState>) {
-      this.coins = this.store.select(state => state.blockchain);
-   }
+    @Select() coins$; // It has the same name of state (NGXS ignores the $)
+    // @Select(state => state.coins) coins$; // The same thing but we can use diff name in our Observable
 
-   ngOnInit() {
-   }
+    constructor(private store: Store)
+    {}
 
+    ngOnInit() {
+    }
+
+    removeCoin(name) {
+        this.store.dispatch(new RemoveBlockchain(<Blockchain>{
+            name: name
+        }));
+    }
 }

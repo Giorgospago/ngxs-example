@@ -3,12 +3,16 @@
       <tr>
          <td>Coin Name</td>
          <td>Coin Price</td>
+         <td>Tools</td>
       </tr>
    </thead>
    <tbody>
-      <tr *ngFor="let coin of coins | async">
+      <tr *ngFor="let coin of coins$ | async">
          <td>{{ coin.name }}</td>
          <td>{{ coin.price }}</td>
+         <td>
+             <button class="btn btn-sm btn-danger" (click)="removeCoin(coin.name)">Delete</button>
+         </td>
       </tr>
    </tbody>
 </table>
